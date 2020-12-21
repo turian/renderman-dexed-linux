@@ -52,4 +52,8 @@ FYI, the username is also renderman within the docker. Within the docker,
 renderman has sudo permissions with password renderman.
 ```
 cd ~
+python example.py
+ls -l example.wav
 ```
+
+If everyone goes well, `example.wav` should exist and contain 441388 bytes.
