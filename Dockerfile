@@ -37,9 +37,9 @@ RUN apt-get install -y mlocate && /usr/bin/updatedb
 RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 # Add non root user
-RUN useradd -ms /bin/bash dexed && echo "dexed:dexed" | chpasswd && adduser dexed sudo
-USER dexed
-ENV HOME /home/dexed
+RUN useradd -ms /bin/bash renderman && echo "renderman:renderman" | chpasswd && adduser renderman sudo
+USER renderman
+ENV HOME /home/renderman
 
 # Build the branch of renderman recommended here:
 # https://spiegelib.github.io/spiegelib/getting_started/installation.html

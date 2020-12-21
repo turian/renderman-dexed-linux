@@ -9,28 +9,32 @@ documentation is great.
 
 ## Ubuntu Setup
 
-We provide instructions for setting up your environment on a fresh
-Ubuntu box, however these steps could be adapted for other Linux
-flavors. These instructions were test on a fresh Ubuntu 20.04 box:
+These instructions were tested on a fresh Ubuntu 18.04 box.
+With Ubuntu 20.04, we had issues getting the headless xserver working.
+
+As root:
 
 ```
-apt-get update
-apt-get install screen
-# Optionally, update everything to the latest and reboot
-apt-get dist-upgrade -y
+./setup.sh
+# Let's reboot so we get everything we dist-upgraded on
 /sbin/shutdown -r now
+```
+
+Now, SSH in as `renderman`:
+
+```
+screen
+startx
+```
 
 ### Docker Instructions
 
 Since Renderman is no longer maintained, it was easiest to build
-this image using Ubuntu 16.04 with python2.7.
+this image using Ubuntu 16.04 with Python2.7 (gross, I know).
+However, your base system can be any Linux flavor.
 
 ```
-docker build -t dexed .
+docker build -t renderman-dexed .
 
-docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -h $HOSTNAME -v $HOME/.Xauthority:/home/docker/.Xauthority -it dexed bash
-#docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -h $HOSTNAME -v $HOME/.Xauthority:/home/spooky/.Xauthority -v ~/wav2synth:/home/spooky/wav2synth -it registry.gitlab.com/turian/wav2synth bash
+docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -h $HOSTNAME -v $HOME/.Xauthority:/home/docker/.Xauthority -it renderman-dexed bash
 ```
-
-cd ~/RenderMan/Builds/LinuxMakefile/build/
-
