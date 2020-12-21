@@ -27,8 +27,7 @@ perl -i -pe 's/allowed_users=.*/allowed_users=anybody/' /etc/X11/Xwrapper.config
 apt-get autoclean && apt-get autoremove -y
 
 # Create a user with the same SSH keys authorized as root but no password
-useradd -ms /bin/bash renderman
-mkdir ~renderman/.ssh/ ; cp ~/.ssh/authorized_keys ~renderman/.ssh/ ; chown -R renderman ~renderman/.ssh/
+useradd -ms /bin/bash ubuntu
+mkdir ~ubuntu/.ssh/ ; cp ~/.ssh/authorized_keys ~ubuntu/.ssh/ ; chown -R ubunt ~ubuntu/.ssh/
 groupadd docker
-usermod -aG docker renderman
-
+usermod -aG docker ubuntu

@@ -33,13 +33,13 @@ cd renderman-dexed-linux
 /sbin/shutdown -r now
 ```
 
-Now, SSH in as `renderman`:
+Now, SSH in as `ubuntu` user:
 ```
 screen
 # In one screen, start Xorg
 startx
 ```
-Note that the host renderman user has no password, and uses the
+Note that the `ubuntu` user has no password, and uses the
 same SSH authorized keys as root.
 
 ## Docker Instructions
