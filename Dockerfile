@@ -52,6 +52,7 @@ RUN cd ~ && git clone -b update_midi_buffer https://github.com/jorshi/RenderMan.
 RUN cd ~/RenderMan/Builds/LinuxMakefile/ && make && mv build/librenderman.so ~
 RUN rm -Rf ~/RenderMan/
 
+# Dexed
 RUN cd ~ && wget https://github.com/asb2m10/dexed/archive/v0.9.4hf1.tar.gz && tar zxvf v0.9.4hf1.tar.gz
 RUN cd ~/dexed-0.9.4hf1/Builds/Linux/ && make && mv build/Dexed.so ~
 RUN rm -Rf ~/dexed-0.9.4hf1/ ~/v0.9.4hf1.tar.gz
