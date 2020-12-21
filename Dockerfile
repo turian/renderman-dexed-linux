@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 ENV LANG C.UTF-8
 LABEL maintainer="lastname@gmail.com"
 LABEL version="0.1"
-LABEL description="Dexed Renderman"
+LABEL description="RenderMan Python API for controlling the Dexed FM synthesizer"
 
 WORKDIR /root/
 
