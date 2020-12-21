@@ -6,7 +6,7 @@ LABEL description="Dexed Renderman"
 
 WORKDIR /root/
 
-ENV TZ=Europe/Berlin
+ENV TZ=Etc/UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Disable Prompt During Packages Installation
