@@ -7,20 +7,12 @@ apt-get install screen
 apt-get dist-upgrade -y
 
 # docker
-apt-get install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-apt-key fingerprint 0EBFCD88
-add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
-apt-get update
-apt-get install -y docker-ce docker-ce-cli containerd.io
+apt-get install -y docker.io
 
 # xorg
 # I don't know if you can run X just within docker, without it
 # on the host.
-apt-get install -y xfce4 xfce4-goodies xfonts-base
+apt-get install -y xinit
 # This might be a security weakness :\
 perl -i -pe 's/allowed_users=.*/allowed_users=anybody/' /etc/X11/Xwrapper.config
 
@@ -31,4 +23,3 @@ useradd -ms /bin/bash renderman
 mkdir ~renderman/.ssh/ ; cp ~/.ssh/authorized_keys ~renderman/.ssh/ ; chown -R renderman ~renderman/.ssh/
 groupadd docker
 usermod -aG docker renderman
-

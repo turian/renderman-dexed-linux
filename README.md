@@ -1,7 +1,8 @@
 # renderman-dexed-linux
 
 Full instructions for using the RenderMan Python API for controlling
-the Dexed FM synthesizer on Linux. 
+the Dexed FM synthesizer on Linux. We use Dexed 0.9.4 since later
+versions drop VST2 support. (This might not matter under Linux?)
 
 If you would like to use OSX, the
 [Spiegelib](https://spiegelib.github.io/spiegelib/getting_started/installation.html)
@@ -18,6 +19,7 @@ web-service.
 
 In principle, you base system can be any Linux flavor. We provide
 scripts for Ubuntu 18.04 that set up docker and a headless xserver.
+This was tested on a Digital Ocean droplet with only 1GB of memory.
 
 With Ubuntu 20.04, we had issues getting the headless xserver
 working. If you have more luck, please submit a pull request.
@@ -42,12 +44,11 @@ same SSH authorized keys as root.
 
 ## Docker Instructions
 
-In other screen, run the docker
-
+In other screen, run the docker:
 ```
 docker pull turian/renderman-dexed
 # Or, build the docker yourself
-#docker build -t renderman-dexed .
+#docker build -t turian/renderman-dexed .
 
 docker run -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=$DISPLAY -h $HOSTNAME -v $HOME/.Xauthority:/home/renderman/.Xauthority -it turian/renderman-dexed bash
 ```
