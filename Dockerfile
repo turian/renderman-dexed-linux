@@ -41,20 +41,16 @@ RUN useradd -ms /bin/bash dexed && echo "dexed:dexed" | chpasswd && adduser dexe
 USER dexed
 ENV HOME /home/dexed
 
-#RUN jupyter nbextension enable --py widgetsnbextension
-#RUN mkdir ~/.vst
-#RUN cp /usr/lib/lxvst/helm.so ~/.vst/
-#RUN rm -Rf ~/.helm/patches
-
+# Build the branch of renderman recommended here:
+# https://spiegelib.github.io/spiegelib/getting_started/installation.html
 RUN cd ~ && git clone -b update_midi_buffer https://github.com/jorshi/RenderMan.git
-RUN cd ~/RenderMan/Builds/LinuxMakefile/ && make
+# On Ubuntu 18 you have to edit the makefile to include
+#    -fvisibility=default
+# Instead, we just use Ubuntu 16.04 for this Dockerfile
+RUN cd ~/RenderMan/Builds/LinuxMakefile/ && make && mv build/librenderman.so ~
+RUN rm -Rf ~/RenderMan/
 
-#cd
-#wget https://github.com/juce-framework/JUCE/releases/download/6.0.5/juce-6.0.5-linux.zip
-#unzip juce-6.0.5-linux.zip
-
-# Only on Ubuntu 18
-#-fvisibility=default
 
 RUN cd ~ && wget https://github.com/asb2m10/dexed/archive/v0.9.4hf1.tar.gz && tar zxvf v0.9.4hf1.tar.gz
-RUN cd ~/dexed-0.9.4hf1/Builds/Linux/ && make
+RUN cd ~/dexed-0.9.4hf1/Builds/Linux/ && make && mv build/Dexed.so ~
+RUN rm -Rf ~/dexed-0.9.4hf1/ v0.9.4hf1.tar.gz
