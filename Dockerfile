@@ -56,6 +56,5 @@ RUN cd ~/RenderMan/Builds/LinuxMakefile/ && make
 # Only on Ubuntu 18
 #-fvisibility=default
 
-RUN cd ~ && wget https://github.com/asb2m10/dexed/archive/v0.9.4hf1.tar.gz
-RUN tar zxvf v0.9.4hf1.tar.gz
-RUN cd dexed-0.9.4hf1/Builds/Linux/ && make
+RUN cd ~ && wget https://github.com/asb2m10/dexed/archive/v0.9.4hf1.tar.gz && tar zxvf v0.9.4hf1.tar.gz
+RUN cd ~/dexed-0.9.4hf1/Builds/Linux/ && make
