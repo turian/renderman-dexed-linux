@@ -20,7 +20,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y sudo less bc screen tmux unzip vim wget
 
 # Build tools
-RUN apt-get install -y python3-pip git build-essential autoconf libtool pkg-config python3-dev python3-venv libboost-all-dev
+RUN apt-get install -y python3-pip git build-essential autoconf libtool pkg-config python3-dev python3-venv libboost-all-dev apt-utils
 
 # JUCE dependencies
 RUN apt-get install -y llvm clang libfreetype6-dev libx11-dev libxinerama-dev libxrandr-dev libxcursor-dev mesa-common-dev libasound2-dev freeglut3-dev libxcomposite-dev libcurl4-gnutls-dev
@@ -53,4 +53,4 @@ RUN rm -Rf ~/RenderMan/
 
 RUN cd ~ && wget https://github.com/asb2m10/dexed/archive/v0.9.4hf1.tar.gz && tar zxvf v0.9.4hf1.tar.gz
 RUN cd ~/dexed-0.9.4hf1/Builds/Linux/ && make && mv build/Dexed.so ~
-RUN rm -Rf ~/dexed-0.9.4hf1/ v0.9.4hf1.tar.gz
+RUN rm -Rf ~/dexed-0.9.4hf1/ ~/v0.9.4hf1.tar.gz
