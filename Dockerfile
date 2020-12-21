@@ -20,7 +20,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y sudo less bc screen tmux unzip vim wget
 
 # Build tools
-RUN apt-get install -y python3-pip git build-essential autoconf libtool pkg-config python3-dev python3-venv libboost-all-dev apt-utils
+RUN apt-get install -y python-pip git build-essential autoconf libtool pkg-config libboost-all-dev apt-utils python-numpy
 
 # JUCE dependencies
 RUN apt-get install -y llvm clang libfreetype6-dev libx11-dev libxinerama-dev libxrandr-dev libxcursor-dev mesa-common-dev libasound2-dev freeglut3-dev libxcomposite-dev libcurl4-gnutls-dev
@@ -29,7 +29,7 @@ RUN apt-get install -y llvm clang libfreetype6-dev libx11-dev libxinerama-dev li
 RUN apt-get install -y xfce4 xfce4-goodies xfonts-base
 
 # Audio tools
-#RUN apt-get install -y bc ffmpeg sox opus-tools lame libsox-fmt-mp3 libasound2-dev graphviz python3-pip git screen  build-essential autoconf libtool pkg-config python3-dev libjack-dev unzip python3-venv nodejs npm nodejs-dev node-gyp libssl1.0-dev zlib1g-dev
+RUN apt-get install -y libsndfile-dev
 
 RUN apt-get install -y mlocate && /usr/bin/updatedb
 
@@ -40,6 +40,8 @@ RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 RUN useradd -ms /bin/bash renderman && echo "renderman:renderman" | chpasswd && adduser renderman sudo
 USER renderman
 ENV HOME /home/renderman
+
+RUN pip install soundfile
 
 # Build the branch of renderman recommended here:
 # https://spiegelib.github.io/spiegelib/getting_started/installation.html
