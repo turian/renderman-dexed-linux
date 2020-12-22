@@ -33,6 +33,12 @@ RUN apt-get install -y libsndfile-dev
 
 RUN apt-get install -y mlocate && /usr/bin/updatedb
 
+RUN pip install soundfile
+
+# These packages are not totally necessary, but useful nonetheless
+RUN pip install tqdm
+RUN apt-get install -y lame
+
 # remove unused files
 RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
@@ -40,8 +46,6 @@ RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 RUN useradd -ms /bin/bash renderman && echo "renderman:renderman" | chpasswd && adduser renderman sudo
 USER renderman
 ENV HOME /home/renderman
-
-RUN pip install soundfile
 
 # Build the branch of renderman recommended here:
 # https://spiegelib.github.io/spiegelib/getting_started/installation.html
