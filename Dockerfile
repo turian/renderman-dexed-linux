@@ -31,16 +31,18 @@ RUN apt-get install -y xfce4 xfce4-goodies xfonts-base
 # Audio tools
 RUN apt-get install -y libsndfile-dev
 
-RUN apt-get install -y mlocate && /usr/bin/updatedb
+RUN apt-get install -y mlocate
 
 RUN pip install soundfile
 
 # These packages are not totally necessary, but useful nonetheless
 RUN pip install tqdm
-RUN apt-get install -y lame
+RUN apt-get install -y lame vorbis-tools libvorbis-dev
 
 # remove unused files
 RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+
+RUN /usr/bin/updatedb
 
 # Add non root user
 RUN useradd -ms /bin/bash renderman && echo "renderman:renderman" | chpasswd && adduser renderman sudo
