@@ -21,7 +21,7 @@ In principle, your base system can be any Linux flavor.
 
 We have been able to get initial setup to work on the following configurations:
 * LambdaLabs cloud instances (Ubuntu 20.04 Focal).
-* Ubuntu 18.04 (Bionic) and Ubunutu 20.10 (Groovy), on a Digital
+* Ubuntu 18.04 (Bionic), on a Digital
 Ocean droplet with only 1GB of memory.
 
 With Ubuntu 20.04, we had issues getting the headless xserver
@@ -29,7 +29,10 @@ working, [described
 here](https://stackoverflow.com/questions/65387635/couldnt-get-a-file-descriptor-referring-to-the-console-through-ssh-ubuntu-20).
 If you have more luck, please submit a pull request.
 
-### Ubuntu 18.04 (Bionic) and 20.10 (Groovy)
+Unfortunately, the Ubuntu 18.04 instructions used to work for Ubuntu
+20.10 (Groovy), but no longer work.
+
+### Ubuntu 18.04 (Bionic)
 
 As root:
 ```
