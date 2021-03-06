@@ -9,7 +9,7 @@ If you would like to use OSX, the
 documentation is great.
 
 Since Renderman is no longer maintained, it was easiest to build
-our Docker image using Ubuntu 16.04 with Python2.7 (gross, I know).
+our Docker image using Ubuntu 18.04 with Python2.7 (gross, I know).
 If you have suggestions about how to build it under Python3, perhaps
 using Projucer to create a new Makefile, great. Alternately,
 you can consider exposing the API in Docker through a simple local
