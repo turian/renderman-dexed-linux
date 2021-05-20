@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:xenial-20210416
 ENV LANG C.UTF-8
 LABEL maintainer="lastname@gmail.com"
 LABEL version="0.1"
