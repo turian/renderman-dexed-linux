@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20210114
+FROM ubuntu:focal
 ENV LANG C.UTF-8
 LABEL maintainer="lastname@gmail.com"
 LABEL version="0.1"
